@@ -1,0 +1,35 @@
+{
+    "name": "Chrome NER",
+    "description": "Reads and annotate text in a web page with the Named Entities.",
+    "version": "1.0",
+    "manifest_version": 3,
+    "icons": {
+        "128": "icon128.png",
+        "48": "icon48.png",
+        "16": "icon16.png"
+    },
+    "action": {
+        "default_popup": "popup/popup.html",
+        "default_icon": {
+        }
+    },
+    "host_permissions": [
+        "https://127.0.0.1:8000/"
+    ],
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting",
+        "tabs"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+          "matches": ["<all_urls>"],
+          "js": ["content.js"],
+          "run_at": "document_start"
+        }
+    ]
+}
